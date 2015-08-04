@@ -1,0 +1,46 @@
+﻿
+
+
+<script>
+//Content Variabelen
+var image	 	= "Models/Data/Planes/SagittalMedial.Plane.png";
+
+
+</script>
+
+ <html>
+ <head>
+     <meta charset="utf-8">
+        <title>NeuroAtlas</title>
+        <script src="../../Scripts/processing.js"></script> 
+     </head>
+     <body>
+       <canvas id="mysketch" data-processing-sources=
+       "
+       /~/Tools/Proccesing/StructureMkr/StructureMaker/StructureMaker.pde 
+       "
+       ></canvas>
+      
+      <script>
+      	var init = false;
+		function initProcessing() {
+			var pjs = Processing.getInstanceById('mysketch');
+    		if(pjs != null) {
+	    		if(typeof(pjs.initialize) == "function") {	
+	    			pjs.initialize(image);
+	        		init = true;
+	    		}
+     		}
+     		if(!init) setTimeout(initProcessing, 250); 
+		}
+		initProcessing();
+
+
+      </script> 
+      <form action="Home/Upload" method="post" enctype="multipart/form-data">
+  <input type="file" name="FileUpload1" /><br />
+  <input type="submit" name="Submit" id="Submit" value="Upload" />
+</form>
+     </body>
+   </html>
+  

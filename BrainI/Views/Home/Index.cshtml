@@ -1,0 +1,32 @@
+﻿
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+function test()
+{
+
+ var username = [[1],[2],[3]]
+
+ $.ajax({
+    url: 'Home/a',
+    type: 'POST',
+    data: {
+      Name : username
+    },
+    success: function (data) {
+        document.location.href="Home/IndexPde";
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+        alert(textStatus);
+    }
+});
+};
+
+
+test();
+})	
+</script>
+
+

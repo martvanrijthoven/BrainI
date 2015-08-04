@@ -1,0 +1,40 @@
+﻿@model BrainI.Content.HomeContent
+
+
+<script type="text/javascript">
+
+    var names = [];
+    var images = [];
+
+    @foreach (var d in Model.planes)
+    {
+        @:names.push("@d.Name");
+        @:images.push("@d.ImgDir");
+    }
+
+    alert(images);
+
+</script>
+
+ <html>
+ <head>
+     <meta charset="utf-8">
+        <title>NeuroAtlas</title>
+        <script src="../../Scripts/processing.js"></script> 
+     </head>
+     <body>
+       <canvas id="mysketch" data-processing-sources=
+       "
+       /~/Pde/Home/Header.pde 
+       /~/Pde/Home/Point.pde 
+       /~/Pde/Home/PlaneNavigator.pde 
+       /~/Pde/Home/NameNavigator.pde 
+       /~/Pde/Home/Navigator.pde 
+       /~/Pde/Home/Home.pde
+       "
+       ></canvas>
+      
+      <script src="../../Scripts/InitProcessing.js"></script> 
+     </body>
+   </html>
+  

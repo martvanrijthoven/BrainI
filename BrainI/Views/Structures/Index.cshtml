@@ -1,0 +1,47 @@
+﻿@model BrainI.Content.StructureContent
+
+<script>
+//Content Variabelen
+
+var name		= "@Model.name";
+var description	= "@Model.description";
+
+
+</script>
+
+ <html>
+ <head>
+     <meta charset="utf-8">
+        <title>NeuroAtlas</title>
+        <script src="../../Scripts/processing.js"></script> 
+     </head>
+     <body>
+       <canvas id="mysketch" data-processing-sources=
+       "
+       /~/Pde/Structure/Header.pde 
+       /~/Pde/Structure/View.pde 
+       /~/Pde/Structure/Text.pde 
+       /~/Pde/Structure/Title.pde 
+       /~/Pde/Structure/Structure.pde
+       "
+       ></canvas>
+      
+      <script>
+      	var init = false;
+		function initProcessing() {
+			var pjs = Processing.getInstanceById('mysketch');
+    		if(pjs != null) {
+	    		if(typeof(pjs.initialize) == "function") {	
+	    			pjs.initialize(name,description);
+	        		init = true;
+	    		}
+     		}
+     		if(!init) setTimeout(initProcessing, 250); 
+		}
+		initProcessing();
+
+
+      </script> 
+     </body>
+   </html>
+  

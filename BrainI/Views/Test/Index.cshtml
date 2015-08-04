@@ -1,0 +1,20 @@
+﻿@model BrainI.Models.MainModel
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+
+@{
+	var names = "";
+	foreach (var item in Model.planes) {
+		names  += item.Key;
+	}
+}
+
+</body>
+</html>
+

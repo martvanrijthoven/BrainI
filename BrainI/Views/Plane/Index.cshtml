@@ -1,0 +1,58 @@
+﻿@model BrainI.Content.PlaneContent
+
+
+<script>
+
+var image	 	= "@Model.plane.ImgDir";
+var names = []
+var csvFiles = []
+var i = 0
+
+@foreach (var s in Model.structures){
+	@:names.push("@s.Name");
+	@:csvFiles.push([])
+	foreach (var c in s.CsvData){
+		@:csvFiles[i].push(["@c.X","@c.Y"])
+	}
+	@:i++
+}
+
+</script>
+
+ <html>
+ <head>
+     <meta charset="utf-8">
+        <title>NeuroAtlas</title>
+        <script src="../../Scripts/processing.js"></script> 
+     </head>
+     <body>
+       <canvas id="mysketch" data-processing-sources=
+       "
+       /~/Pde/Plane/Header.pde 
+       /~/Pde/Plane/Table2.pde 
+       /~/Pde/Plane/Point.pde 
+       /~/Pde/Plane/StructureNavigator.pde 
+       /~/Pde/Plane/NameNavigator.pde 
+       /~/Pde/Plane/Plane.pde
+       "
+       ></canvas>
+      
+      <script>
+      	var init = false;
+		function initProcessing() {
+			var pjs = Processing.getInstanceById('mysketch');
+    		if(pjs != null) {
+	    		if(typeof(pjs.initialize) == "function") {	
+	    			pjs.initialize(image,names,csvFiles);
+	        		init = true;
+	    		}
+     		}
+     		if(!init) setTimeout(initProcessing, 250); 
+		}
+		initProcessing();
+
+
+      </script> 
+     </body>
+   </html>
+  
