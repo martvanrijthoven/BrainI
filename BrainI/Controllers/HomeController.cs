@@ -50,7 +50,7 @@ namespace BrainI.Controllers
 			{
 				string filename = Path.GetFileName(Request.Files[upload].FileName);
 				Request.Files[upload].SaveAs(Path.Combine(_PLANES, filename));
-				return "gelukt";
+				return "gelukt2";
 			}
 			return "?";
 		}
